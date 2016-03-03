@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<title>Turtletron ΈΚΔΟΣΗ v003 -20160302</title>
 <meta charset="utf-8">
 <!--
 <script type="text/javascript">
@@ -470,7 +471,7 @@ function evaluate1() {
     eval(document.getElementById('funct').value);
 }    
 function update_label1() {
-    document.getElementById('label1').innerHTML=turn+"'s turn, "+pixels_left+" pixels left of ink.";
+    document.getElementById('label1').innerHTML="Σειρά: <font size=+2 color=green >"+turn+"</font>. "+pixels_left+" pixels έμειναν για χρήση.";
 }
 
 function load() {
