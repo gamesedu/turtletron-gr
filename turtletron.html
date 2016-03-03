@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Turtletron ΈΚΔΟΣΗ v004 -20160302c - colored turtles</title>
+<title>Turtletron ΈΚΔΟΣΗ v004b -20160303 - colored turtles</title>
 <meta charset="utf-8">
 <!--
 <script type="text/javascript">
@@ -232,7 +232,7 @@ function fd_(distance,obj) {//primitive for drawing foward
 function fd__(distance) {//drawing foward with distance calculations
 	var x=0,y=0,angle=0;
     if(pixels_left-distance<0) {
-        alert("You do not have enough ink to complete this move!");
+        alert("Δέν έχεις αρκετό μελάνι για να ολοκληρώσεις αυτή την κίνηση! Σου έμεινε μονο "+pixels_left+"μελάνι");
         return;
     }
     if(turn=="player1") {
@@ -329,7 +329,7 @@ function fd__(distance) {//drawing foward with distance calculations
     }        
     
 	//check to see if turle is out of the area
-    if(newx>c.width || newy>c.height || newx<0 || newy<0) alert("You went out of the screen");
+    if(newx>c.width || newy>c.height || newx<0 || newy<0) alert("Βγήκες εκτός οθόνης");
     
     //change turn if nessesary
     pixels_left=pixels_left-distance;
@@ -536,23 +536,24 @@ update_label1();
 var line_array = [];
 </script>
 <BR>
-<BR>fd(distance)   foward
-<BR>lt(angle) turn left degrees
-<BR>rt(angle) turn right degrees
 <BR>
+<table border="2">
+	<tr>
+		<td bgcolor="grey" >	
 <input type="text" ID="command"> <input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="evaluate2()">
 <input type="button" value="cs()" onclick="cs()">
+</td></tr></table>
 <BR>
-<table border="1">
+<table border="2">
 	<tr>
-		<td>
-			ΜΠΡΟΣΤΑ(<input type="text" value="100" id="fdammount" style="width: 25px;">);<input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="fdbutton()">;
+		<td bgcolor="grey" >
+			ΜΠΡΟΣΤΑ(<input type="text" value="100" id="fdammount" style="width: 25px;">);<input type="button" value="ΜΠΡΟΣΤΑ" onclick="fdbutton()">;
 		</td>
-		<td>
-			ΔΕΞΙΑ(<input type="text" value="90" id="rtammount" style="width: 25px;">);<input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="rtbutton()">;
+		<td bgcolor="grey" >
+			ΔΕΞΙΑ(<input type="text" value="90" id="rtammount" style="width: 25px;">);<input type="button" value="ΔΕΞΙΑ" onclick="rtbutton()">;
 		</td>
-		<td>
-			ΑΡΙΣΤΕΡΑ(<input type="text" value="90" id="ltammount" style="width: 25px;">);<input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="ltbutton()">;
+		<td bgcolor="grey" >
+			ΑΡΙΣΤΕΡΑ(<input type="text" value="90" id="ltammount" style="width: 25px;">);<input type="button" value="ΑΡΙΣΤΕΡΑ" onclick="ltbutton()">;
 		</td>
 	</tr>
 </table>
@@ -604,7 +605,7 @@ function chairchain(l){
 
 </textarea>
 <BR>
-pixels per turn:<input type="text" ID="ppt" value="100"> <input type="button" value="set" onclick="set_ppt()">
+pixels σε κάθε γύρο:<input type="text" ID="ppt" value="100"> <input type="button" value="set" onclick="set_ppt()">
 collision detection on:<input type="checkbox" ID="cd" checked="checked">
 <input type="button" value="two player mode" onclick="two_player_mode()">
 <input type="button" value="single player mode" onclick="single_player_mode()">
@@ -620,6 +621,8 @@ collision detection on:<input type="checkbox" ID="cd" checked="checked">
 Navigation by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center> -->
 <!--optional--> 
 <!--<noscript><center><table bgcolor=gray cellspacing=0 border=2 bordercolor=red> <tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center> This site is a member of WebRing. Visit <a href="http://ss.webring.com/navbar?f=l;y=usmpadow;u=defurl"> here</a>.</td></tr></table></td></tr></table></center></noscript> -->
+<BR>Βασικές εντολές :
+<BR>ΜΠΡΟΣΤΑ(απόσταση), ΑΡΙΣΤΕΡΑ(γωνία),ΔΕΞΙΑ(γωνία)  ή ΜΠ() ,ΔΕ(),ΑΡ() 
 </body>
 </html>
 
