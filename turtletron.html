@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<meta charset="utf-8">
+<!--
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -14,15 +16,16 @@
   })();
 
 </script>
+-->
 </head>
 <body>
 <div id="label1">If you can see this probably you dont have Javascript enabled. Initializing label...</div>
 
 <canvas id="myCanvas" width="300" height="300" style="border:1px solid #c3c3c3;">
-Your browser does not support the canvas element.
+ΔΕΝ ΥΠΟΣΤΗΡΙΖΕΤΑΙ Η ΛΕΙΤΟΥΡΓΙΑ canvas element.
 </canvas>
 <textarea rows="14" cols="32" ID="history">
-Command History:
+ΙΣΤΟΡΙΚΟ ΕΝΤΟΛΩΝ:
 </textarea>
 
 
@@ -347,6 +350,10 @@ function fd(distance) {
     draw_turtle(player2);
     document.getElementById('history').value=document.getElementById('history').value+turn+": fd("+distance+");\n";//add to history
 }
+function ΜΠ(distance) { fd(distance);}
+function ΜΠΡΟΣΤΑ(distance) { fd(distance);}
+
+
 function cs() {
     //DrawRect(0,0,c.width,c.height,"#FFFFFF");//cxt.clearRect(0,0,c.width,c.height);//
     //cxt.clearRect(0,0,c.width,c.height);//should clear canvas, but doesn't
@@ -404,6 +411,8 @@ function lt(degrees_left) {
     draw_turtle(player2);
     document.getElementById('history').value=document.getElementById('history').value+turn+": lt("+degrees_left+");\n";//add to history
 }
+function ΑΡ(degrees_left) { lt(degrees_left);}
+function ΑΡΙΣΤΕΡΑ(degrees_left) { lt(degrees_left);}
 
 function rt(degrees_right) {
     c.width=c.width;//clear canvas
@@ -420,6 +429,10 @@ function rt(degrees_right) {
     draw_turtle(player2);
         document.getElementById('history').value=document.getElementById('history').value+turn+": rt("+degrees_right+");\n";//add to history
 }
+function ΔΕ(degrees_left) { rt(degrees_left);}
+function ΔΕΞΙΑ(degrees_left) { rt(degrees_left);}
+
+
 function lt_(degrees_left,obj) {
     obj.angle=obj.angle-degrees_left;
 }
@@ -524,64 +537,68 @@ var line_array = [];
 <BR>lt(angle) turn left degrees
 <BR>rt(angle) turn right degrees
 <BR>
-<input type="text" ID="command"> <input type="button" value="evaluate" onclick="evaluate2()">
+<input type="text" ID="command"> <input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="evaluate2()">
 <input type="button" value="cs()" onclick="cs()">
 <BR>
 <table border="1">
 	<tr>
 		<td>
-			fd(<input type="text" value="100" id="fdammount" style="width: 25px;">);<input type="button" value="eval" onclick="fdbutton()">;
+			ΜΠΡΟΣΤΑ(<input type="text" value="100" id="fdammount" style="width: 25px;">);<input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="fdbutton()">;
 		</td>
 		<td>
-			rt(<input type="text" value="90" id="rtammount" style="width: 25px;">);<input type="button" value="eval" onclick="rtbutton()">;
+			ΔΕΞΙΑ(<input type="text" value="90" id="rtammount" style="width: 25px;">);<input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="rtbutton()">;
 		</td>
 		<td>
-			lt(<input type="text" value="90" id="ltammount" style="width: 25px;">);<input type="button" value="eval" onclick="ltbutton()">;
+			ΑΡΙΣΤΕΡΑ(<input type="text" value="90" id="ltammount" style="width: 25px;">);<input type="button" value="ΕΚΤΕΛΕΣΗ" onclick="ltbutton()">;
 		</td>
 	</tr>
 </table>
 <BR>
-<textarea rows="8" cols="32" ID="funct">
-//function list (enter functions in JavaScript)
+<textarea rows="10" cols="62" ID="funct">
+//ΕΤΟΙΜΕΣ ΣΥΝΑΡΤΗΣΕΙΣ (enter functions in JavaScript)
 function square(l) {
-   fd(l);
-   rt(90);
-   fd(l);
-   rt(90);
-   fd(l);
-   rt(90);
-   fd(l);
-   rt(90);
-}
-function stair() {
-   for(foobar=0;foobar<5;foobar++) {
-       rt(90);
-       fd(10);
-       lt(90);
-       fd(10);
-   }
+   ΜΠΡΟΣΤΑ(l);
+   ΔΕΞΙΑ(90);
+   ΜΠΡΟΣΤΑ(l);
+   ΔΕΞΙΑ(90);
+   ΜΠΡΟΣΤΑ(l);
+   ΔΕΞΙΑt(90);
+   ΜΠΡΟΣΤΑ(l);
+   ΔΕΞΙΑ(90);
 }
 function chair(l){
    square(l);
-   fd(l*2);
+   ΜΠΡΟΣΤΑ(l*2);
+}
+function house() {
+	ΜΠΡΟΣΤΑ(100);
+	ΑΡΙΣΤΕΡΑ(135);
+	ΜΠΡΟΣΤΑ(100);
+	ΑΡΙΣΤΕΡΑ(90);
+	ΜΠΡΟΣΤΑ(30);
+	ΑΡΙΣΤΕΡΑ(45);
+	square(150);
+}
+function stair() {
+   for(foobar=0;foobar<5;foobar++) {
+       ΔΕΞΙΑ(90);
+       ΜΠΡΟΣΤΑ(10);
+       ΑΡΙΣΤΕΡΑ(90);
+       ΜΠΡΟΣΤΑ(10);
+   }
 }
 function chairchain(l){
-   rt(20);
-   fd(l);
+   ΔΕΞΙΑ(20);
+   ΜΠΡΟΣΤΑ(l);
    for(foo=1;foo<=10;foo++){
-      rt(20);
+      ΔΕΞΙΑ(20);
        chair(foo);
    }
 }
-function house() {
-	fd(100);
-	lt(135);
-	fd(100);
-	lt(90);
-	fd(30);
-	lt(45);
-	square(150);
-}
+
+
+
+
 </textarea>
 <BR>
 pixels per turn:<input type="text" ID="ppt" value="100"> <input type="button" value="set" onclick="set_ppt()">
@@ -595,7 +612,11 @@ collision detection on:<input type="checkbox" ID="cd" checked="checked">
  <script type="text/javascript" language="javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={  };} (function(){s=document.createElement("script");s.setAttribute("type","text/javascript");s.setAttribute("src", "http://www.htmlcommentbox.com/jread?page="+escape((window.hcb_user && hcb_user.PAGE)||(""+window.location)).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24Jz6kdIcrNrVLA6vgjX5/z0"+"&opts=478&num=10");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
 <!-- end htmlcommentbox.com -->
 
-<center><script type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=usmpadow;u=defurl"></script> Navigation by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center> <!--optional--> <noscript><center><table bgcolor=gray cellspacing=0 border=2 bordercolor=red> <tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center> This site is a member of WebRing. Visit <a href="http://ss.webring.com/navbar?f=l;y=usmpadow;u=defurl"> here</a>.</td></tr></table></td></tr></table></center></noscript> 
+<center><!--
+<script type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=usmpadow;u=defurl"></script> 
+Navigation by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center> -->
+<!--optional--> 
+<!--<noscript><center><table bgcolor=gray cellspacing=0 border=2 bordercolor=red> <tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center> This site is a member of WebRing. Visit <a href="http://ss.webring.com/navbar?f=l;y=usmpadow;u=defurl"> here</a>.</td></tr></table></td></tr></table></center></noscript> -->
 </body>
 </html>
 
