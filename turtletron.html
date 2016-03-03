@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Turtletron ΈΚΔΟΣΗ v003 -20160302</title>
+<title>Turtletron ΈΚΔΟΣΗ v004 -20160302c - colored turtles</title>
 <meta charset="utf-8">
 <!--
 <script type="text/javascript">
@@ -224,6 +224,8 @@ function fd_(distance,obj) {//primitive for drawing foward
     obj.y=newy;
     cxt.lineTo(newx,newy);
     cxt.strokeStyle="#0000FF";
+    if(obj==player1)cxt.strokeStyle="green"; //160302  : player color
+    if(obj==player2)cxt.strokeStyle="red"; //160302  : player color
     cxt.stroke();
     cxt.beginPath();
 }
@@ -349,7 +351,7 @@ function fd(distance) {
     //cxt.save();
     draw_turtle(player1);
     draw_turtle(player2);
-    document.getElementById('history').value=document.getElementById('history').value+turn+": fd("+distance+");\n";//add to history
+    document.getElementById('history').value=document.getElementById('history').value+turn+": ΜΠΡΟΣΤΑ("+distance+");\n";//add to history
 }
 function ΜΠ(distance) { fd(distance);}
 function ΜΠΡΟΣΤΑ(distance) { fd(distance);}
@@ -410,7 +412,7 @@ function lt(degrees_left) {
     cxt.save();
     draw_turtle(player1);
     draw_turtle(player2);
-    document.getElementById('history').value=document.getElementById('history').value+turn+": lt("+degrees_left+");\n";//add to history
+    document.getElementById('history').value=document.getElementById('history').value+turn+": ΑΡΙΣΤΕΡΑ("+degrees_left+");\n";//add to history
 }
 function ΑΡ(degrees_left) { lt(degrees_left);}
 function ΑΡΙΣΤΕΡΑ(degrees_left) { lt(degrees_left);}
@@ -428,7 +430,7 @@ function rt(degrees_right) {
     cxt.save();
     draw_turtle(player1);
     draw_turtle(player2);
-        document.getElementById('history').value=document.getElementById('history').value+turn+": rt("+degrees_right+");\n";//add to history
+        document.getElementById('history').value=document.getElementById('history').value+turn+": ΔΕΞΙΑ("+degrees_right+");\n";//add to history
 }
 function ΔΕ(degrees_left) { rt(degrees_left);}
 function ΔΕΞΙΑ(degrees_left) { rt(degrees_left);}
